@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 my-1">
+                <div class="col my-1">
                     <div class="card card-details">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -37,20 +37,10 @@
                             </div>
                         @endif
                         <h1>Who is Going?</h1>
-                        <p>Trip to {{ $item -> travel_package -> location }}</p>
-                        <div class="attendee">
+                        <p>Trip to {{ $item -> location }}</p>
+                        {{-- <div class="attendee">
                             <div class="table-responsive">
                                 <table class="table text-center">
-                                    <thead>
-                                        <tr>
-                                            <td>Picture</td>
-                                            <td>Name</td>
-                                            <td>Nationality</td>
-                                            <td>Visa</td>
-                                            <td>Passport</td>
-                                            <td></td>
-                                        </tr>
-                                    </thead>
                                     <tbody>
                                         @forelse ($item -> details as $detail)
                                         <tr>
@@ -69,69 +59,51 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="member mt-3">
-                            <h2>Add Member</h2>
-                            <form method="post" action="{{ route('checkout-create', $item->id) }}">
+                        {{-- <div class="member mt-3">
+                            <form method="post" action="{{ route('checkout-hotel-create') }}">
                                 @csrf
+                                <input type="hidden" name="hotels_id" value="{{ $item->id }}">
                                 <div class="row">
                                     <div class="col-4">
                                         <label for="username" class="form-label">Name</label>
-                                        <input type="text" name="username" class="form-control mb-2 mr-sm-2" id="username" placeholder="Username"  required>
+                                        <input type="text" name="username" class="form-control mb-2 mr-sm-2" id="username" placeholder="Username" readonly  required value="{{ Auth::user()->name }}">
                                     </div>
                                     <div class="col-4">
-                                        <label for="nationality" class="form-label">Nationality</label>
-                                        <input type="text" name="nationality" class="form-control mb-2 mr-sm-2" id="nationality" placeholder="Nationality" required>
+                                        <label for="nationality" class="form-label">Start Date</label>
+                                        <input type="date" name="start_date" class="form-control mb-2 mr-sm-2" id="nationality" placeholder="Nationality" required>
                                     </div>
                                     <div class="col-4">
-                                        <label for="is_visa" class="form-label">Visa</label>
-                                        <select name="is_visa" id="is_visa" class="form-control mb-2 mr-sm-2" required>
-                                            <option value = "" selected>VISA</option>
-                                            <option value = "1">30 Days</option>
-                                            <option value = "0">N/A</option>
-                                        </select>
+                                        <label for="nationality" class="form-label">Finish Date</label>
+                                        <input type="date" name="finish_date" class="form-control mb-2 mr-sm-2" id="nationality" placeholder="Nationality" required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6">
-                                        <label for="doe_passport" class="form-label">DOE Pass</label>
-                                        <input type="date" required class="form-control" name="doe_passport" id="doe_passport" placeholder="DOE Passport">
-                                    </div>
-                                    <div class="col-6">
+                                    <div class="col">
                                         <label for="doe_passport" class="form-label">&nbsp;</label><br>
                                         <button type="submit" class="btn btn-add-now px-3 mx-auto">Add Now</button>
                                     </div>
                                 </div>
                             </form>
-                            <h3 class="mt-3 mb-0">Note</h3>
-                            <p class="disclaimer mb-0">You are only able to invite member that has registered in Travelgo.</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 my-1">
+                </div> --}}
+                <div class="col my-1">
                     <div class="card card-details">
                         <h2><b>Checkout Information</b></h2>
                         <div class="row mb-2 trip-information">
-                            <div class="col-6">Member</div>
-                            <div class="col-6 text-right">{{ $item -> details -> count() }} Person</div>
-                        </div>
-                        <div class="row mb-2 trip-information">
-                            <div class="col-6">Additional Visa</div>
-                            <div class="col-6 text-right">IDR {{ $item -> additional_visa }}</div>
-                        </div>
-                        <div class="row mb-2 trip-information">
-                            <div class="col-6">Trip Price</div>
-                            <div class="col-6 text-right">IDR {{ number_format($item -> travel_package -> price) }} / Person</div>
+                            <div class="col-6">Hotel Price</div>
+                            <div class="col-6 text-right">IDR {{ number_format($item -> hotel -> price) }} / Night</div>
                         </div>
                         <div class="row mb-2 trip-information">
                             <div class="col-6">Subtotal</div>
-                            <div class="col-6 text-right">IDR {{ number_format($item->transaction_total) }}</div>
+                            <div class="col-6 text-right">IDR {{ number_format($item -> transaction_total) }}</div>
                         </div>
                         <div class="row mb-2 trip-information">
                             <div class="col-6">Total(+Unique)</div>
                             <div class="col-6 text-right text-total">
-                                <span class="text-blue">IDR {{ number_format($item->transaction_total) }}.</span>
+                                <span class="text-blue">IDR {{ number_format($item -> transaction_total) }}.</span>
                                 <span class="text-orange">{{mt_rand(0,99)}}</span>
                             </div>
                         </div>
@@ -157,10 +129,10 @@
                             </div>
                         </div>
                         <div class="join-container my-3">
-                            <a href="{{ route('checkout-success', $item -> id) }}" class="btn btn-block btn-join-now py-2">Confirm Payment</a>
+                            <a href="{{ route('checkout-hotel-success', $item -> id) }}" class="btn btn-block btn-join-now py-2">Confirm Payment</a>
                         </div>
                         <div class="text-center">
-                            <a href="{{ route('package-detail', $item->id)}}" class="text-muted">Cancel Booking</a>
+                            <a href="{{ route('checkout-hotel-remove', $item->id)}}" class="text-muted">Cancel Booking</a>
                         </div>
                     </div>
                 </div>

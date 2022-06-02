@@ -31,8 +31,11 @@
                             <td>{{$loop->index+1}}</td>
                             <td>{{$item->title}}</td>
                             <td>{{$item->location}}</td>
-                            {{-- <td><img src="{{ url($item->galleries->first()->image) }}" style="width: 200px"></td> --}}
-                            <td> - </td>
+                            @if (isset($item->galleries_hotel->first()->image))
+                            <td><img src="{{ url($item->galleries_hotel->first()->image) }}" style="width: 200px"></td>
+                            @else
+                            <td>-</td>
+                            @endif
                             <td>{{$item -> about}}</td>
                             <td>{{$item -> type}}</td>
                             <td>{{$item -> price}}</td>
