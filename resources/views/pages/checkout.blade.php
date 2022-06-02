@@ -142,7 +142,7 @@
                             <div class="bank-item pb-3">
                                 <img src="{{url('images/ic_bank.webp')}}" alt="" class="bank-image my-2">
                                 <div class="description">
-                                    <h3>PT. Travelgo ID</h3>
+                                    <h3>PT. Traject ID</h3>
                                     <p>5271 6789 8877 <br> Bank Central Asia</p>
                                 </div>
                                 <div class="clearfix"></div>
@@ -150,7 +150,7 @@
                             <div class="bank-item pb-3">
                                 <img src="{{url('images/ic_bank.webp')}}" alt="" class="bank-image my-2">
                                 <div class="description">
-                                    <h3>PT. Travelgo ID</h3>
+                                    <h3>PT. Traject ID</h3>
                                     <p>6435 5555 6661 <br> Bank Mandiri</p>
                                 </div>
                                 <div class="clearfix"></div>

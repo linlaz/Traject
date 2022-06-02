@@ -21,7 +21,8 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::get('/', [HomeController::class, 'index']) -> name('home');
 Route::get('/package', [PackageController::class, 'index']) -> name('package');
 Route::get('/package/detail/{id}', [PackageController::class, 'detail']) -> name('package-detail');
-Route::get('/flight', [ServiceController::class, 'flight']) -> name('service-flight');
+Route::get('/hotel', [ServiceController::class, 'hotel']) -> name('service-hotel');
+Route::get('/hotel/detail/{id}', [ServiceController::class, 'show']) -> name('hotel-detail');
 Route::get('/detail/checkout/{id}', [CheckoutController::class, 'detailcheckout']) -> name('checkout') -> middleware(['auth', 'verified']);
 Route::get('/checkout/{id}', [CheckoutController::class, 'index']) -> name('checkout') -> middleware(['auth', 'verified']);
 Route::post('/checkout/{id}', [CheckoutController::class, 'process']) -> name('checkout-post') -> middleware(['auth', 'verified']);
@@ -35,7 +36,7 @@ Route::prefix('admin')
     ->group(function() {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('hotel', 'HotelController');
-        Route::resource('galleryhotel', 'HotelController');
+        Route::resource('galleryhotel', 'GalleryHotelController');
         Route::resource('travel-package', 'TravelPackageController');
         Route::resource('gallery', 'GalleryController');
         Route::resource('transaction', 'TransactionController');

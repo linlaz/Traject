@@ -14,7 +14,7 @@
                     Services
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Hotel</a></li>
+                    <li><a class="dropdown-item" href="/hotel">Hotel</a></li>
                 </ul>
             </li>
             <li class="nav-item mx-md-2"><a href="#" class="nav-link">Blog</a></li>
