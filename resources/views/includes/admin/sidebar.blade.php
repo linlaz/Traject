@@ -48,6 +48,12 @@
       <span>Transaction Travel</span></a>
   </li>
 
+  <li class="nav-item ">
+    <a class="nav-link" href="{{route('transactionhotel.index')}}">
+      <i class="fas fa-fw fa-dollar-sign"></i>
+      <span>Transaction Hotel</span></a>
+  </li>
+
   <hr class="sidebar-divider">
 
   <!-- Sidebar Toggler (Sidebar) -->

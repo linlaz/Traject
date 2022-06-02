@@ -76,13 +76,10 @@
                         </div>
                         <div class="row join-container mt-3">
                             @auth
-                            <form action="{{ route('checkout', $item->id)}}" method="post">
-                                @csrf
-                                <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">Join Now</button>
-                            </form>
+                                <a href="/checkout-hotel/{{ $item->id }}" class="btn btn-block btn-join-now mt-3 py-2">Checkout Now</a>
                             @endauth
                             @guest
-                            <a href="{{ route('login') }}" class="btn btn-block btn-join-now mt-3 py-2">Login or Register to Join</a>
+                                <a href="{{ route('login') }}" class="btn btn-block btn-join-now mt-3 py-2">Login or Register to Join</a>
                             @endguest
                         </div>
                     </div>

@@ -31,7 +31,7 @@
                             @foreach ($searches as $search)
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <div class="card-travel text-center d-flex flex-column py-5"
-                                style="background-image: url('{{ $search->galleries->count() ? url ($search -> galleries -> first() -> image) : '' }}');">
+                                style="background-image: url('{{ $search->galleries_hotel->count() ? url ($search -> galleries_hotel -> first() -> image) : '' }}');">
                                     <div class="travel-country">{{ $search->location }}</div>
                                     <div class="travel-location">{{ $search->title }}</div>
                                     <div class="travel-button">
@@ -46,7 +46,7 @@
             </div>
             @endif
             <div class="my-5">
-                <h2 class="{{$searches != "" ? "" : "section-popular-package"}}" style="{{ $searches == "" ? "color: #ffffff;" : " " }}">Popular Destination</h2>
+                <h2 class="{{$searches != "" ? "" : "section-popular-package"}}" style="{{ $searches == "" ? "color: #ffffff;" : " " }}">Popular Hotel</h2>
                 <section class="section-popular-content">
                     <div class="section-popular-travel row justify-content-center">
                         @foreach ($populars as $popular)
