@@ -19,8 +19,8 @@
             </li>
             <li class="nav-item mx-md-2"><a href="#" class="nav-link">Blog</a></li>
             @auth
-            @if (Auth::user()->roles == 'ADMIN')
-                <li class="nav-item mx-md-2"><a href="{{url('/admin')}}" class="nav-link">Admin</a></li>
+            @if (Auth::user()->roles == 'ADMIN'||Auth::user()->roles == 'mitra')
+                <li class="nav-item mx-md-2"><a href="{{url('/admin')}}" class="nav-link">Dashboard</a></li>
             @else
                 <li class="nav-item mx-md-2"><a href="{{ route('profile.show') }}" class="nav-link {{ Request::is('user/*') ? 'active' : ''}}">Account</a></li>
             @endif

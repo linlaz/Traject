@@ -55,7 +55,13 @@
   </li>
 
   <hr class="sidebar-divider">
-
+  @if(Auth::user()->role == 'ADMIN')
+  <li class="nav-item ">
+    <a class="nav-link" href="/admin/mitra">
+      <i class="fas fa-fw fa-dollar-sign"></i>
+      <span>mitra</span></a>
+  </li>
+  @endif
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>

@@ -6,8 +6,8 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\MitraController;
 use App\Http\Controllers\TransactionHotelController;
-use App\Models\TransactionHotel;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -49,7 +49,7 @@ Route::get('/checkout/confirm/{id}', [CheckoutController::class, 'success']) -> 
 
 Route::prefix('admin')
     ->namespace('Admin')
-    ->middleware(['auth','admin'])
+    ->middleware(['auth'])
     ->group(function() {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('hotel', 'HotelController');
@@ -58,5 +58,11 @@ Route::prefix('admin')
         Route::resource('travel-package', 'TravelPackageController');
         Route::resource('gallery', 'GalleryController');
         Route::resource('transaction', 'TransactionController');
+        Route::get('mitra',[MitraController::class,"index"])->name("mitra.index");
+        Route::get('mitra/create',[MitraController::class,"create"])->name("mitra.create");
+        Route::post('mitra',[MitraController::class,"store"])->name("mitra.store");
+        Route::get('mitra/edit/{id}',[MitraController::class,"edit"])->name("mitra.edit");
+        Route::post('mitra/update/{id}',[MitraController::class,"update"])->name("mitra.update");
+        Route::post('mitra/destroy/{id}',[MitraController::class,"destroy"])->name("mitra.destroy");
     }
 );
