@@ -38,10 +38,14 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
                 </x-jet-button>
+                <a href="{{ route('register') }}" class="ml-4">
+                    <x-jet-button type="button">
+                        {{ __('Register') }}
+                    </x-jet-button>
+                </a>
             </div>
         </form>
     </x-jet-authentication-card>
